@@ -1,7 +1,7 @@
 FROM ubuntu
 MAINTAINER Brian L. Scott "Brainscott@gmail.com"
 RUN apt-get install -y openssh-server
-RUN mkdir /var/run/sshd 
+RUN mkdir /var/run/sshd
 RUN echo 'root:letmein' |chpasswd
 RUN sudo apt-get install curl -y
 RUN sudo apt-get install default-jre -y
@@ -19,5 +19,5 @@ EXPOSE 8000
 EXPOSE 9200
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
-CMD ["python", "-m", "SimpleHTTPServer"]
 CMD ["/etc/init.d/elasticsearch", "start"]
+CMD ["python", "-m", "SimpleHTTPServer"]
