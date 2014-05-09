@@ -7,7 +7,6 @@ RUN sudo apt-get install curl -y
 RUN sudo apt-get install default-jre -y
 RUN curl -L -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.0.deb
 RUN sudo dpkg -i elasticsearch-1.1.0.deb
-RUN sudo /etc/init.d/elasticsearch start
 RUN echo "Installing Kibana..."
 RUN curl -L -O https://github.com/packetbeat/kibana/releases/download/v3.0.0-pb/kibana-3.0-packetbeat.tar.gz
 RUN tar -xzvf kibana-3.0-packetbeat.tar.gz
@@ -19,5 +18,5 @@ EXPOSE 8000
 EXPOSE 9200
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
-CMD ["/etc/init.d/elasticsearch", "start"]
+CMD ["sudo","/etc/init.d/elasticsearch", "start"]
 CMD ["python", "-m", "SimpleHTTPServer"]
